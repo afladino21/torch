@@ -37,7 +37,7 @@ class NeuronalNetwork(nn.Module):
         self.relu = nn.ReLU()
         self.l2 = nn.Linear(hidden_size, num_clasess)
 
-    def feedforward(self, x):
+    def forward(self, x):
         out = self.l1(x)
         out = self.relu(out)
         out = self.l2(out)
@@ -59,7 +59,7 @@ for epoch in range(num_epochs):
         labels = labels.to(device)
 
         # Forward
-        outs = model.feedforward(images)
+        outs = model.forward(images) # O simplemente pasarle el modelo model(images)
         loss = criterion(outs, labels)
 
         # Backward
